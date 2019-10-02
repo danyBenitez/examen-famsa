@@ -24,6 +24,7 @@ public class PendientesController {
 	@Autowired
 	PendienteService pendienteService;
 	
+	@CrossOrigin
 	@GetMapping(value = "/all")
     public ResponseEntity<List<Pendiente>> getPendientes(){
 		List<Pendiente> body = this.pendienteService.list();
