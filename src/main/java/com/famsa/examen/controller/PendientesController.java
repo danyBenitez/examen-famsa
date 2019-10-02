@@ -18,14 +18,16 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.famsa.examen.model.Pendiente;
 import com.famsa.examen.service.PendienteService;
 
+
 @RestController
+@CrossOrigin
 @RequestMapping("/pendientes")
 public class PendientesController {
 	
 	@Autowired
 	PendienteService pendienteService;
 	
-	@CrossOrigin
+	
 	@GetMapping(value = "/all")
     public ResponseEntity<List<Pendiente>> getPendientes(){
 		List<Pendiente> body = this.pendienteService.list();
