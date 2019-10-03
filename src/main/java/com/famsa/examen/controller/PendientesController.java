@@ -27,7 +27,7 @@ public class PendientesController {
 	@Autowired
 	PendienteService pendienteService;
 	
-	
+	@CrossOrigin
 	@GetMapping(value = "/all")
     public ResponseEntity<List<Pendiente>> getPendientes(){
 		List<Pendiente> body = this.pendienteService.list();
@@ -36,7 +36,7 @@ public class PendientesController {
 		}
     	return new ResponseEntity<List<Pendiente>>(this.pendienteService.list(), HttpStatus.OK);
     }
-	
+	@CrossOrigin
 	@PostMapping(value = "/save")
 	public ResponseEntity<Long> savePendiente(@RequestBody Pendiente pendiente){
 		if (pendiente == null) {
@@ -44,7 +44,7 @@ public class PendientesController {
 		}
 		return new ResponseEntity<Long>(this.pendienteService.save(pendiente), HttpStatus.CREATED);
 	}
-	
+	@CrossOrigin
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Pendiente> getPendienteById(@PathVariable("id") long id){
 		
@@ -54,13 +54,13 @@ public class PendientesController {
 		}
 		return new ResponseEntity<Pendiente>(pendiente, HttpStatus.OK);
 	}
-	
+	@CrossOrigin
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<?> updatePendiente(@PathVariable("id") long id, @RequestBody Pendiente pendiente){
 		this.pendienteService.update(id, pendiente);
 		return ResponseEntity.ok().body("Actualizado correctamente");
 	}
-	
+	 @CrossOrigin
 	 @DeleteMapping("/{id}")
 	 public ResponseEntity<?> deletePendiente(@PathVariable("id") long id){
 		 this.pendienteService.delete(id);
