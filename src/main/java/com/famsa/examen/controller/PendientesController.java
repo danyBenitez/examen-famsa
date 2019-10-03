@@ -62,8 +62,8 @@ public class PendientesController {
 	}
 	 @CrossOrigin
 	 @DeleteMapping("/{id}")
-	 public ResponseEntity<?> deletePendiente(@PathVariable("id") long id){
+	 public ResponseEntity<Long> deletePendiente(@PathVariable("id") long id){
 		 this.pendienteService.delete(id);
-		 return ResponseEntity.ok().body("Eliminado correctamente");
+		 return new ResponseEntity<Long>(id, HttpStatus.OK);
 	 }
 }
